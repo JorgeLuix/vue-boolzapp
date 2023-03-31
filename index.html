@@ -10,9 +10,39 @@
     <title>Boolsapp</title>
 </head>
 <body>
+    
     <div id="app">
-        <div class="container w-100-vh-100">
-            
+        <div class="container w-100-vh-100 m-auto border border-warning ">
+            <div class="row">
+                <!-- Lato sinistro -->
+               <div class="col-4 border">
+                <div class="account-info">
+                    <img class="avatar" src="./img/avatar_io.jpg" alt=""><!-- Informazioni sull'account -->
+                  </div>
+                  <div class="notification">
+                    notifiche<!-- Avviso sull'attivazione delle notifiche -->
+                  </div>
+                  <div class="input-group flex-nowrap">
+                    <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Username" aria-describedby="addon-wrapping">
+                  </div>
+                  <!-- contact-list -->
+                 <div class="contact-list">
+                   <div v-for="contact in contacts" :key="contact.id" class="contact d-flex m-3 py-2">
+                     <img :src="contact.avatar" :alt="contact.name" class="avatar">
+                     <div class="info">
+                       <h5>{{ contact.name }}</h5>
+                       
+                     </div>
+                    </div>
+                 </div>
+               </div>
+                <!-- contact-list -->
+                 <!-- Lato sinistro -->
+                 <div class="col-8 border jc-bg">
+                   <!-- Lato destro -->
+                 </div>
+             </div>
         </div>
     </div>
 
