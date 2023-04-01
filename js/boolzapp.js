@@ -173,14 +173,19 @@ createApp({
                 }
             ],
         }
-    ] 
+    ],
+    activeContac: null,
+    newMessage: '',
     }
   },
+ 
   methods: {
     lastMessage(messages) {
       const last = messages[messages.length - 1]
       if (!last) return ''
-      return last.status === 'received' ? `${last.message}` : `You: ${last.message}`
-    }
-  }
+      return last.status === 'received' ? `${last.message}` : `${last.message}`
+    },
+    
+    },
+  
 }).mount('#app')

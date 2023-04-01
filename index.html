@@ -11,37 +11,82 @@
 </head>
 <body>
     
-    <div id="app">
-        <div class="container w-100-vh-100 m-auto border border-warning ">
+    <div id="app" class="sfondo">
+        <div class="container w-100 vh-100 m-auto">
             <div class="row">
                 <!-- Lato sinistro -->
                <div class="col-4 border">
-                <div class="account-info">
-                    <img class="avatar" src="./img/avatar_io.jpg" alt=""><!-- Informazioni sull'account -->
-                  </div>
-                  <div class="notification">
-                    notifiche<!-- Avviso sull'attivazione delle notifiche -->
-                  </div>
+                <!-- Informazioni sull'account -->
+                    <div class=" d-flex align-items-center justify-content-between m-3 py-2">
+                        <div class="d-flex align-items-center">
+                            <img class="avatar" src="./img/avatar_io.jpg" alt="">
+                            <h5>Sofia</h5>
+                        </div>
+                        <div class="icons-acount">
+                            <span ><i class="fa-solid fa-circle-notch"></i></span>
+                            <span><i class="fa-solid fa-message"></i></span>
+                            <span><i class="fa-solid fa-ellipsis-vertical"></i></span>
+                        </div>
+                    </div>
+                  <!-- Avviso sull'attivazione delle notifiche -->
+                  <div class="d-flex align-items-center">
+                        <span class="pe-2"><i class="fa-solid fa-bell-slash"></i></span>
+                        <div>
+                            <p>Ricevi notifiche di nuovi messaggi</p>
+                            <span><a href="">Attiva notifiche desktop</a></span>
+                        </div>
+                    </div>
+                  <!-- barra di ricerca-->
                   <div class="input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
-                    <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Username" aria-describedby="addon-wrapping">
+                        <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Username" aria-describedby="addon-wrapping">
                   </div>
                   <!-- contact-list -->
                  <div class="contact-list">
-                   <div v-for="contact in contacts" :key="contact.id" class="contact d-flex m-3 py-2">
-                     <img :src="contact.avatar" :alt="contact.name" class="avatar">
-                     <div class="info">
-                       <h5>{{ contact.name }}</h5>
-                       
-                     </div>
+                   <div v-for="contact in contacts" :key="contact.id"
+                    class="contact d-flex align-items-center m-3 py-2 justify-content-between">
+                        <div class="d-flex">
+                            <img :src="contact.avatar" :alt="contact.name" class="avatar">
+                            <div>
+                                <h5>{{ contact.name }}</h5>
+                                <p>{{ lastMessage(contact.messages) }}</p>
+                            </div>
+                        </div>
+                        <div class="flex-column">
+                        <p>{{ contact.messages[contact.messages.length - 1].date }}</p>
+                        </div>
                     </div>
                  </div>
                </div>
                 <!-- contact-list -->
                  <!-- Lato sinistro -->
-                 <div class="col-8 border jc-bg">
-                   <!-- Lato destro -->
-                 </div>
+                <div class="col-8 border">
+                    <div class="profilo d-flex align-items-center justify-content-between p-3">
+                        <div class="d-flex align-items-center">
+                            <img class="avatar" src="./img/avatar_io.jpg" alt="">
+                            <h5></h5>
+                        </div>
+                        <div class="icons">
+                            <span class="fa-solid fa-magnifying-glass"></span>
+                            <span class="fa-solid fa-paperclip"></span>
+                            <span class="fa-solid fa-ellipsis-vertical"></span>
+                        </div>
+                    </div>
+                        <div class="contenuto-message jc-bg">
+                            2
+                        </div>
+                        <div class="input-group mb-3 border p-2 d-flex jc-input">
+                            <div class="smile d-flex justify-content-around align-items-center text-dark-emphasis">
+                            <span class="fa-regular fa-face-smile"></span>
+                            <span class="fa-solid fa-paperclip"></span>
+                            </div>
+                            <input type="text" class="form-control jc-inp" placeholder="Scrivi un messaggio"
+                             aria-label="Recipient's username" aria-describedby="basic-addon2">
+                             <div class="micro d-flex justify-content-center align-items-center text-dark-emphasis">
+                             <span class="fa-solid fa-microphone"></span>
+                            </div>
+                        </div>
+                </div>
              </div>
         </div>
     </div>

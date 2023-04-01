@@ -1,16 +1,69 @@
- .sfondo{
-    height: 100px;
-    background-color: black;
+ /*.sfondo{
+    background: linear-gradient(
+    #009688 0%,
+    #009688 130px,
+    #d9dbd5 130px,
+    #d9dbd5 100%);
+    height: 80px;
+    
+ }*/
+
+span i{
+    padding: 5px;
 }
-
-
 .avatar {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     margin-right: 10px;
   }
- 
+  
+  p {
+    margin: 0;
+    font-size: 14px;
+    color: #888;
+  }
+  .contact-list {
+    height: calc(100% - 240px); 
+    overflow-y: auto; 
+  }
+  .contact-list::-webkit-scrollbar {
+    width: 6px; 
+    height: 2px; 
+  }
+  
+  .contact-list::-webkit-scrollbar-track {
+    background: #f4f4f4; /* colore di sfondo della scrollbar */
+  }
+  
+  .contact-list::-webkit-scrollbar-thumb {
+    background: #888; /* colore del "pulsante" della scrollbar */
+  }
+  
+  .contact-list::-webkit-scrollbar-thumb:hover {
+    background: #555; /* colore del "pulsante" della scrollbar quando viene passato sopra con il mouse */
+  }
   .jc-bg{
     background-image: url(/img/mine.jpg);
   }
+  .smile {
+    width: 50px;
+  }
+  .micro {
+    width: 50px;
+  }
+  .jc-inp{
+    width: calc(100% - 100px);
+    height: 50px;
+  }
+  .profilo {
+    height: 80px;
+    border: 1px solid;
+  }
+.contenuto-message {
+    height: calc(100vh - 130px);
+    border: 1px solid;
+}
+.icons span{
+    padding: 10px;
+}
