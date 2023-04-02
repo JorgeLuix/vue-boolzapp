@@ -174,18 +174,43 @@ createApp({
             ],
         }
     ],
-    activeContac: null,
+    activeContact: null,
     newMessage: '',
+    chatSearch: '',
     }
   },
  
-  methods: {
-    lastMessage(messages) {
-      const last = messages[messages.length - 1]
-      if (!last) return ''
-      return last.status === 'received' ? `${last.message}` : `${last.message}`
-    },
-    
-    },
+    methods: {
+        /******seleziona un contatto attivo */
+        setActiveContact(contact) {
+          this.activeContact = contact;
+          
+        },
+        /********funzione per filtrare contatti */
+       filteredContacts() {
+            return this.contacts.filter((contact) => {
+              return contact.name.toLowerCase().startsWith(this.chatSearch.toLowerCase())
+            })
+          },
+          
+        sendMessage() {
+          if (this.newMessage.trim() !== '') {
+            this.activeContact.messages.push({
+              date: new Date().toLocaleString(),
+              message: this.newMessage.trim(),
+              status: 'sent'
+            });
+            this.newMessage = '';
+
+            setTimeout(() => {
+              this.activeContact.messages.push({
+                date: new Date().toLocaleString(),
+                message: 'Ok',
+                status: 'received'
+              });
+            }, 2000);
+          }
+        }
+      }
   
 }).mount('#app')

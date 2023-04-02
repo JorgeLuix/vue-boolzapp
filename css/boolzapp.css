@@ -61,9 +61,34 @@ span i{
     border: 1px solid;
   }
 .contenuto-message {
-    height: calc(100vh - 130px);
+    height: calc(100vh - 60px);
     border: 1px solid;
+}
+.notifiche {
+    background-color: #53BDEB;
+    height: calc(60px + 10px);
+    
 }
 .icons span{
     padding: 10px;
+}
+.sent-message {
+    color: green;
+    width: 200px;
+    height: 70px;
+    display: block;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-flow: flex-end;
+    
+}
+.received-message{
+    background-color:lightgrey;
+    width: 200px;
+    height: 70px;
+    display: block;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
 }
