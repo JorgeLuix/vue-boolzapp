@@ -30,7 +30,7 @@
                         </div>
                     </div>
                   <!-- Avviso sull'attivazione delle notifiche -->
-                  <div class="container d-flex align-items-center notifiche">
+                  <div class="container d-flex align-items-center notifiche p-2">
                         <span class="pe-2"><i class="fa-solid fa-bell-slash"></i></span>
                         <div>
                             <p>Ricevi notifiche di nuovi messaggi</p>
@@ -49,7 +49,7 @@
                   <!-- contact-list -->
                  <div class="contact-list">
                    <div v-for="contact in filteredContacts()" :key="contact.id"
-                    class="contact d-flex align-items-center m-3 py-2 justify-content-between">
+                    class="chats contact d-flex align-items-center m-0 py-2 justify-content-between">
                         <div class="d-flex" @click="setActiveContact(contact)">
                             <img :src="contact.avatar" :alt="contact.name" class="avatar">
                             <div>
@@ -67,14 +67,15 @@
                  <!--// Lato sinistro// -->
 
                  <!--lato destro-->
-                <div class="col-12 col-md-8" v-if="activeContact">
+                <div class="col-12 col-md-8 h-100" v-if="activeContact">
+                    <!---Sezione header-chat--->
                     <div class=" row contenuto-chat flex-grow-1 d-flex flex-column justify-content-between h-100">
-                        <div class="header-profilo d-flex align-items-center justify-content-between p-3">
+                        <div class="col-12 header-profilo d-flex align-items-center justify-content-between p-3">
                             <div class="d-flex align-items-center">
                                 <img class="avatar" :src="activeContact.avatar" alt="active contact avatar">
                                 <div class="details">
                                     <h2>{{ activeContact.name }}</h2>
-                                    <p>Ultimo accesso oggi alle {{ activeContact.lastSeen }}</p>
+                                    <p>Ultimo accesso oggi alle</p>
                                 </div>
                             </div>
                             <div class="icons">
@@ -83,23 +84,30 @@
                                 <span class="fa-solid fa-ellipsis-vertical"></span>
                             </div>
                         </div>
-                            <div class="contenuto-message py-5 px-3 px-md-5">
+                        <!---////Sezione header-chat///--->
+
+                        <!---Sezione contenuto-chat--->
+                            <div class=" col-12 contenuto-message py-5 px-3 px-md-5">
                                 <p class="py-3 my-5 px-3 rounded p-chat " v-for="message in activeContact.messages"
                                 :class="message.status === 'sent' ? 'sent-message' : 'received-message'">{{ message.message }}
                                 <span class="text-end text-muted">{{message.date.slice(11).slice(0, 5)}}</span>
                                 </p>
                              </div>
-                        <div class="input-group mb-3 border p-2 d-flex foot-input">
-                            <div class="smile d-flex justify-content-around align-items-center text-dark-emphasis">
-                                <span class="fa-regular fa-face-smile"></span>
-                                <span class="fa-solid fa-paperclip"></span>
-                            </div>
-                            <input type="text" class="form-control jc-inp" placeholder="Scrivi un messaggio"
+                             <!---///Sezione contenuto///-chat--->
+
+                             <!---Sezione input-chat--->
+                            <div class="input-group mb-3 border p-2">
+                                <div class="smile fs-5 d-flex justify-content-around align-items-center text-dark-emphasis">
+                                    <span class="fa-regular fa-face-smile"></span>
+                                    <span class="fa-solid fa-paperclip"></span>
+                                </div>
+                            <input type="text" class="form-control jc-inp rounded-3" placeholder="Scrivi un messaggio"
                              aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="newMessage" @keyup.enter="sendMessage">
                              <div class="micro d-flex justify-content-center align-items-center text-dark-emphasis">
-                            <span class="fa-solid fa-microphone"></span>
+                            <span class="fs-5 fa-solid fa-microphone"></span>
                             </div>
                         </div>
+                        <!---////Sezione input-chat///--->
                     </div>
                 </div>
             </div>

@@ -35,7 +35,7 @@ span i{
     color: black;
   }
   .jc-wrapper{
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
     background-image: url(../img/mine.jpg);
     
@@ -43,7 +43,6 @@ span i{
   }
   .contenuto-left{
     background-color: var(--bg-contatti);
-    position: relative;
     height: 100%;
     padding-bottom: 75px;
     color: white;
@@ -52,6 +51,13 @@ span i{
     height: calc(100% - 240px); 
     overflow-y: auto; 
   }
+  .chats:hover {
+    background-color: var(--bg-chat);
+    cursor: pointer;
+}
+.chats.selected {
+    background-color: var(--bg-chat);
+}
   .contact-list::-webkit-scrollbar {
     width: 6px; 
     height: 2px; 
@@ -69,26 +75,29 @@ span i{
     background: #555; /* colore del "pulsante" della scrollbar quando viene passato sopra con il mouse */
   }
   .smile {
-    width: 50px;
+    width: 70px;
+    
   }
   .micro {
-    width: 50px;
+    width: 70px;
   }
   .jc-inp{
-    width: calc(100% - 100px);
+    width: calc(100% - 140px);
     height: 50px;
   }
-  .foot-input{
-    position: relative;
+  /*.foot-input{
     left: 0;
     right: 0;
     bottom: 0;
     background-color: #eff1f4;
     padding: 0.4rem 0.5rem;
-  }
+  }*/
   .profilo-left {
     height: 80px;
     background-color: var(--bg-chat);
+  }
+  .contenuto-chat{
+    
   }
   .header-profilo{
     position: fixed;
@@ -100,8 +109,8 @@ span i{
     color: white;
   }
 .contenuto-message {
-    height: 100%;
-    overflow-y: scroll;
+    height: calc(100% - 80px);
+    overflow-y: auto;
 }
 .contenuto-message p {
     width: fit-content;
@@ -109,7 +118,9 @@ span i{
 
 }
 .notifiche {
-    background-color: #53BDEB;    
+    background-color: #53BDEB; 
+    height: 80px;
+
 }
 .icons span{
     padding: 10px;
