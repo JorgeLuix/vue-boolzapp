@@ -33,7 +33,7 @@
                   <div class="container d-flex align-items-center notifiche p-2">
                         <span class="pe-2"><i class="fa-solid fa-bell-slash"></i></span>
                         <div>
-                            <p>Ricevi notifiche di nuovi messaggi</p>
+                            <p class="padd-notifiche">Ricevi notifiche di nuovi messaggi</p>
                             <span><a href="">Attiva notifiche desktop</a></span>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                             <div class=" col-12 contenuto-message py-5 px-3 px-md-5">
                                 <p class="py-3 my-5 px-3 rounded p-chat " v-for="message in activeContact.messages"
                                 :class="message.status === 'sent' ? 'sent-message' : 'received-message'">{{ message.message }}
-                                <span class="text-end text-muted">{{message.date.slice(11).slice(0, 5)}}</span>
+                                <span class="text-end text-muted">{{message.date.slice(10).slice(0, 5)}}</span>
                                 </p>
                              </div>
                              <!---///Sezione contenuto///-chat--->

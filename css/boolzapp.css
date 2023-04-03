@@ -48,7 +48,7 @@ span i{
     color: white;
   }
   .contact-list {
-    height: calc(100% - 240px); 
+    height: calc(100% - 80px); 
     overflow-y: auto; 
   }
   .chats:hover {
@@ -121,6 +121,10 @@ span i{
     background-color: #53BDEB; 
     height: 80px;
 
+}
+.padd-notifiche {
+    padding: 0;
+    
 }
 .icons span{
     padding: 10px;
