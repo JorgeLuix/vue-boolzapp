@@ -11,14 +11,14 @@
 </head>
 <body>
     
-    <div id="app" class="sfondo">
-        <div class="container-fluid w-100 vh-100">
-            <div class="row">
+    <div id="app" class="sfondo w-100 vh-100">
+        <div class="container-fluid jc-wrapper">
+            <div class="row h-100">
                 <!-- Lato sinistro -->
-               <div class="col-4 border">
+               <div class="contenuto-left col-12 col-md-4">
                 <!-- Informazioni sull'account -->
                 <div class="account">
-                    <div class="profilo d-flex align-items-center justify-content-between">
+                    <div class="profilo-left d-flex align-items-center justify-content-between">
                         <div class="d-flex align-items-center">
                             <img class="avatar" src="./img/avatar_io.jpg" alt="">
                             <h5>Sofia</h5>
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                   <!-- Avviso sull'attivazione delle notifiche -->
-                  <div class="container profilo d-flex align-items-center notifiche">
+                  <div class="container d-flex align-items-center notifiche">
                         <span class="pe-2"><i class="fa-solid fa-bell-slash"></i></span>
                         <div>
                             <p>Ricevi notifiche di nuovi messaggi</p>
@@ -67,30 +67,29 @@
                  <!--// Lato sinistro// -->
 
                  <!--lato destro-->
-                <div class="col-8 border" v-if="activeContact">
-                    <div class=>
-                    <div class="profilo d-flex align-items-center justify-content-between p-3">
-                        <div class="d-flex align-items-center">
-                            <img class="avatar" :src="activeContact.avatar" alt="active contact avatar">
-                            <div class="details">
-                                <h2>{{ activeContact.name }}</h2>
-                                <p>Ultimo accesso oggi alle {{ activeContact.lastSeen }}</p>
-                              </div>
+                <div class="col-12 col-md-8" v-if="activeContact">
+                    <div class=" row contenuto-chat flex-grow-1 d-flex flex-column justify-content-between h-100">
+                        <div class="header-profilo d-flex align-items-center justify-content-between p-3">
+                            <div class="d-flex align-items-center">
+                                <img class="avatar" :src="activeContact.avatar" alt="active contact avatar">
+                                <div class="details">
+                                    <h2>{{ activeContact.name }}</h2>
+                                    <p>Ultimo accesso oggi alle {{ activeContact.lastSeen }}</p>
+                                </div>
+                            </div>
+                            <div class="icons">
+                                <span class="fa-solid fa-magnifying-glass"></span>
+                                <span class="fa-solid fa-paperclip"></span>
+                                <span class="fa-solid fa-ellipsis-vertical"></span>
+                            </div>
                         </div>
-                        <div class="icons">
-                            <span class="fa-solid fa-magnifying-glass"></span>
-                            <span class="fa-solid fa-paperclip"></span>
-                            <span class="fa-solid fa-ellipsis-vertical"></span>
-                        </div>
-                    </div>
-                        <div class="contenuto-message jc-bg">
-                            <div class="message" v-for="message in activeContact.messages" :key="message.date"
-                             :class="message.status === 'sent' ? 'sent-message' : 'received-message'">
-                                <p>{{ message.message }}</p>
-                                <span class="position-absolute text-end text-muted ">{{message.date.slice(11).slice(0, 5)}}</span>
-                              </div>
-                        </div>
-                        <div class="input-group mb-3 border p-2 d-flex jc-input">
+                            <div class="contenuto-message py-5 px-3 px-md-5">
+                                <p class="py-3 my-5 px-3 rounded p-chat " v-for="message in activeContact.messages"
+                                :class="message.status === 'sent' ? 'sent-message' : 'received-message'">{{ message.message }}
+                                <span class="text-end text-muted">{{message.date.slice(11).slice(0, 5)}}</span>
+                                </p>
+                             </div>
+                        <div class="input-group mb-3 border p-2 d-flex foot-input">
                             <div class="smile d-flex justify-content-around align-items-center text-dark-emphasis">
                                 <span class="fa-regular fa-face-smile"></span>
                                 <span class="fa-solid fa-paperclip"></span>

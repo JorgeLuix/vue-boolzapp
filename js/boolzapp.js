@@ -178,6 +178,7 @@ createApp({
     newMessage: '',
     chatSearch: '',
     }
+    
   },
  
     methods: {

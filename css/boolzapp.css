@@ -1,3 +1,11 @@
+ :root{
+    --general-height:100%;
+    --bg-chat: #222E35;
+    --bg-contatti: #111B21;
+    --bg-content-chat: #008069;
+   
+ }
+ 
  /*.sfondo{
     background: linear-gradient(
     #009688 0%,
@@ -19,9 +27,26 @@ span i{
   }
   
   p {
-    margin: 0;
-    font-size: 14px;
-    color: #888;
+    margin-bottom: 1rem;
+    font-size: 20px;
+    color: white;
+  }
+  .p-chat{
+    color: black;
+  }
+  .jc-wrapper{
+    height: 100vh;
+    overflow: hidden;
+    background-image: url(../img/mine.jpg);
+    
+    
+  }
+  .contenuto-left{
+    background-color: var(--bg-contatti);
+    position: relative;
+    height: 100%;
+    padding-bottom: 75px;
+    color: white;
   }
   .contact-list {
     height: calc(100% - 240px); 
@@ -43,9 +68,6 @@ span i{
   .contact-list::-webkit-scrollbar-thumb:hover {
     background: #555; /* colore del "pulsante" della scrollbar quando viene passato sopra con il mouse */
   }
-  .jc-bg{
-    background-image: url(/img/mine.jpg);
-  }
   .smile {
     width: 50px;
   }
@@ -56,39 +78,48 @@ span i{
     width: calc(100% - 100px);
     height: 50px;
   }
-  .profilo {
+  .foot-input{
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #eff1f4;
+    padding: 0.4rem 0.5rem;
+  }
+  .profilo-left {
     height: 80px;
-    border: 1px solid;
+    background-color: var(--bg-chat);
+  }
+  .header-profilo{
+    position: fixed;
+    top: 0;
+    height: 80px;
+    min-width: 100%;
+    background-color: var(--bg-chat);
+    z-index: 1000;
+    color: white;
   }
 .contenuto-message {
-    height: calc(100vh - 60px);
-    border: 1px solid;
+    height: 100%;
+    overflow-y: scroll;
+}
+.contenuto-message p {
+    width: fit-content;
+    max-width: 300px;
+
 }
 .notifiche {
-    background-color: #53BDEB;
-    height: calc(60px + 10px);
-    
+    background-color: #53BDEB;    
 }
 .icons span{
     padding: 10px;
 }
 .sent-message {
-    color: green;
-    width: 200px;
-    height: 70px;
-    display: block;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    flex-flow: flex-end;
+    background-color: #D9FDD3;
+    margin-left: auto;
     
 }
 .received-message{
-    background-color:lightgrey;
-    width: 200px;
-    height: 70px;
-    display: block;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
+    background-color:white;
+    margin-right: auto;
 }
