@@ -203,7 +203,7 @@ createApp({
         },
           
         sendMessage() {
-          if (this.newMessage.trim().lenght !== '') {
+          if (this.newMessage.trim() !== '') {
             this.activeContact.messages.push({
               date: new Date().toLocaleString(),
               message: this.newMessage.trim(),

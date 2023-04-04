@@ -105,10 +105,10 @@
                                     <span class="fa-solid fa-paperclip"></span>
                                 </div>
                             <input type="text" class="form-control jc-inp rounded-3" placeholder="Scrivi un messaggio"
-                             aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="newMessage" @keyup.enter="sendMessage">
+                             aria-label="Recipient's username" aria-describedby="basic-addon2" v-model="newMessage" @keyup.enter="sendMessage()">
                              <div class="micro d-flex justify-content-center align-items-center text-dark-emphasis">
-                            <span class="fs-5 fa-solid fa-microphone"></span>
-                            <i @click="sendMessage()" v-if="newMessage" class="fa-solid fa-paper-plane"></i>
+                            <button @click="sendMessage()" class="fs-4 btn btn-outline border-0">
+                            <i :class="[newMessage.trim() !== '' ? 'fa-solid fa-paper-plane text-success' : 'fa-solid fa-microphone text-secondary']"></i></button>
                             </div>
                         </div>
                         <!---////Sezione input-chat///--->
