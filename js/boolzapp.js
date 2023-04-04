@@ -179,6 +179,8 @@ createApp({
     chatSearch: '',
     showChat: false,
     writing: false,
+    changeTheme: false,
+    lightTheme: false
     }
     
   },
@@ -195,7 +197,7 @@ createApp({
               return contact.name.toLowerCase().startsWith(this.chatSearch.toLowerCase())
             })
           },
-
+          /****funzione risposte random***/
           getRndInteger(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         },
@@ -221,6 +223,7 @@ createApp({
             this.newMessage = '',
             this.writing = "started"
             setTimeout(() => {
+                 
                 this.activeContact.messages.push({
                   date: new Date().toLocaleString(),
                   message: answers[answer],
@@ -233,10 +236,21 @@ createApp({
 
             }, 3000);
          };
-       
+         
            
-         }
-    }
+        },
+        DarkLight() {
+            this.lightTheme = !this.lightTheme;
+            this.changeTheme = !this.changeTheme;
+            if (this.lightTheme) {
+            document.querySelector("body").className = "bglight"
+            }
+            else {
+            document.querySelector("body").className = "bgblack"
+            }
+        }
+    },
+
       
     
 }).mount('#app')

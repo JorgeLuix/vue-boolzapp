@@ -145,7 +145,18 @@ span i{
     height: 60px;
 }
 
+.icons-acount button{
+    cursor: pointer;
+    background-color: transparent;
+    color: white;
+    border-width: 0;
+    padding: 10px;
+    font-size: 1.3rem;
+}
+
+
 @media screen and (max-width:865px){
+
   .contenuto-left {
       width: 50%;
   }
