@@ -108,6 +108,9 @@ span i{
     z-index: 1000;
     color: white;
   }
+  .icon-left{
+    display: none;
+  }
 .contenuto-message {
     height: calc(100% - 80px);
     overflow-y: auto;
@@ -137,4 +140,36 @@ span i{
 .received-message{
     background-color:white;
     margin-right: auto;
+}
+.input-chat{
+    height: 60px;
+}
+
+@media screen and (max-width:865px){
+  .contenuto-left {
+      width: 50%;
+  }
+
+  .contenuto-right {
+      width: 50%;
+  }
+}
+
+@media screen and (max-width:684px) {
+  #app {
+      width: 100%;
+      height: 100%;
+      margin:0;
+  }
+  .contenuto-left {
+      width: 100%;
+  }
+
+  .contenuto-right {
+      width: 100%;
+  }
+
+  .icon-left {
+      display:inline-block;
+  }
 }

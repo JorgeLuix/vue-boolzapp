@@ -177,6 +177,10 @@ createApp({
     activeContact: null,
     newMessage: '',
     chatSearch: '',
+    showChat: false,
+    writing: false,
+    newAnswer:{},
+    newAnswerReceveid:{}
     }
     
   },
@@ -193,25 +197,58 @@ createApp({
               return contact.name.toLowerCase().startsWith(this.chatSearch.toLowerCase())
             })
           },
+
+          getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        },
           
         sendMessage() {
-          if (this.newMessage.trim() !== '') {
+          if (this.newMessage.trim().lenght !== '') {
             this.activeContact.messages.push({
               date: new Date().toLocaleString(),
               message: this.newMessage.trim(),
               status: 'sent'
             });
-            this.newMessage = '';
+            newAnswer= {
+                date: new Date().toLocaleString(),
+              message: this.newMessage.trim(),
+              status: 'sent'
+            }
+            this.newMessage = '',
+
+            answers = ["☼-☼! x.x (^☼^)",
+            "Va bene",
+            "Cosa vuoi..",
+            "Messaggio predeterminato: Non rompere",
+            "Non dimenticare ",
+            ];
+
+            answer = this.getRndInteger(0, answers.length - 1)
+            
+            this.newMessage = '',
 
             setTimeout(() => {
-              this.activeContact.messages.push({
-                date: new Date().toLocaleString(),
-                message: 'Ok',
-                status: 'received'
-              });
+                this.activeContact.messages.push({
+                  date: new Date().toLocaleString(),
+                  message: answers[answer],
+                  status: 'received'
+                });
+                newAnswerReceived= {
+                    date: new Date().toLocaleString(),
+                  message: answers[answer],
+                  status: 'received'
+                }
+               
+              }, 1000);
+              setTimeout(() => { 
+                this.writing = false;
+
             }, 2000);
-          }
-        }
-      }
-  
+         };
+       
+           
+         }
+    }
+      
+    
 }).mount('#app')
