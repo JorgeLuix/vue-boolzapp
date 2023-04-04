@@ -179,8 +179,6 @@ createApp({
     chatSearch: '',
     showChat: false,
     writing: false,
-    newAnswer:{},
-    newAnswerReceveid:{}
     }
     
   },
@@ -209,11 +207,6 @@ createApp({
               message: this.newMessage.trim(),
               status: 'sent'
             });
-            newAnswer= {
-                date: new Date().toLocaleString(),
-              message: this.newMessage.trim(),
-              status: 'sent'
-            }
             this.newMessage = '',
 
             answers = ["☼-☼! x.x (^☼^)",
@@ -226,24 +219,19 @@ createApp({
             answer = this.getRndInteger(0, answers.length - 1)
             
             this.newMessage = '',
-
+            this.writing = "started"
             setTimeout(() => {
                 this.activeContact.messages.push({
                   date: new Date().toLocaleString(),
                   message: answers[answer],
                   status: 'received'
                 });
-                newAnswerReceived= {
-                    date: new Date().toLocaleString(),
-                  message: answers[answer],
-                  status: 'received'
-                }
-               
+                this.writing = "ended"
               }, 1000);
               setTimeout(() => { 
                 this.writing = false;
 
-            }, 2000);
+            }, 3000);
          };
        
            

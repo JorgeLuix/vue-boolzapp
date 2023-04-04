@@ -78,7 +78,13 @@
                                 <img class="avatar" :src="activeContact.avatar" alt="active contact avatar">
                                 <div class="details">
                                     <h5 class="pt-2">{{ activeContact.name }}</h5>
-                                    <p>Ultimo accesso oggi alle</p>
+                                    <div>
+                                        <span>Ultimo accesso </span>
+                                        <span class="">
+                                            {{writing === 'started' ? 'Sta scrivendo...' : writing === 'ended' ? 'Online' :
+                                            activeContact.messages[activeContact.messages.length - 1].date.slice(0.5)}}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="icons">
