@@ -9,26 +9,35 @@
     <link rel="stylesheet" href="./css/boolzapp.css">
     <title>Boolsapp</title>
 </head>
-<body>
+<body class="">
     
-    <div id="app" class="sfondo w-100 vh-100">
-        <div class="container-fluid jc-wrapper">
+    <div id="app" class="w-100 vh-100">
+        <div class="jc-wrapper container-fluid">
             <div class="row h-100">
                 <!-- Lato sinistro -->
                <div class="contenuto-left col-12 col-md-4" :class="{'d-none' : showChat}">
                 <!-- Informazioni sull'account -->
                 
-                    <div class="profilo-left d-flex align-items-center justify-content-between">
+                    <div class="profilo-left d-flex align-items-center justify-content-between"
+                    :class="{theme: modeTheme}">
                         <div class="d-flex align-items-center">
                             <img class="avatar" src="./img/avatar_io.jpg" alt="">
                             <h5>Jorge</h5>
                         </div>
-                        <div class="icons-acount">
+                        <div class="icons-acount controls-icon position-relative">
                             <button ><i class="fa-solid fa-circle-notch"></i></button>
                             <button><i class="fa-solid fa-message"></i></button>
-                            <button>
+                            <button class="ellipsis-button"  @click="showMenu = !showMenu">
                                 <i class="me-3 fa-solid fa-ellipsis-vertical"></i>
                             </button>
+                                <div class="themeselection controls-icon item-dropdown 
+                                d-flex flex-column align-items-center justify-content-between"
+                                 :class="{showmenu : showMenu}">
+                                    <button class="text-dark" @click="changeTheme()">
+                                        {{!modeTheme ? "Attiva lightTheme" : "Disattiva lightTheme"}}
+                                    </button>
+                                </div>
+                            
                         </div>
                     </div>
                   <!-- Avviso sull'attivazione delle notifiche -->
@@ -40,7 +49,7 @@
                         </div>
                     </div>
                   <!-- barra di ricerca-->
-                  <div class="container">
+                  <div class="container" :class="{theme: modeTheme}">
                     <div class="input-group my-2">
                             <span class="input-group-text" id="addon-wrapping"><i class="fa-solid fa-magnifying-glass"></i></span>
                             <input type="text" class="form-control" placeholder="Cerca o inizia una nuova chat" aria-label="Username"
@@ -49,9 +58,10 @@
                     </div>
                 
                   <!-- contact-list -->
-                 <div class="contact-list">
-                   <div v-for="contact in filteredContacts()" :key="contact.id"
-                    class="chats contact d-flex align-items-center m-0 py-2 justify-content-between">
+                 <div class="contact-list" :class="{theme: modeTheme}">
+                   <div v-for="(contact,index) in filteredContacts()" :key="contact.id"  :class="{ active: contact === activeContact }"
+                   class="contact"
+                    class="chats contact d-flex align-items-center m-0 p-3 justify-content-between">
                         <div class="d-flex" @click="setActiveContact(contact)">
                             <img :src="contact.avatar" :alt="contact.name" class="avatar">
                             <div>
@@ -69,10 +79,12 @@
                  <!--// Lato sinistro// -->
 
                  <!--lato destro-->
-                <div class="col-12 col-md-8 h-100 d-md-block" v-if="activeContact" :class="{'d-none' : !showChat}">
+                <div class="col-12 col-md-8 h-100 d-md-block" v-if="activeContact" 
+                :class="{'d-none' : !showChat}">
                     <!---Sezione header-chat--->
-                    <div class=" row contenuto-right flex-grow-1 d-flex flex-column justify-content-between h-100">
-                        <div class="col-12 header-profilo d-flex align-items-center justify-content-between p-3">
+                    <div class=" row contenuto-right flex-grow-1 d-flex flex-column justify-content-between h-100"
+                    :class="{theme: modeTheme}">
+                        <div class="col-12 container header-profilo d-flex align-items-center justify-content-between p-3">
                             <div class="d-flex align-items-center p-2">
                                 <button class="icon-left">
                                     <i class="fa-solid fa-angle-left p-2"></i>
@@ -81,29 +93,32 @@
                                 <div class="details">
                                     <h5 class="pt-2">{{ activeContact.name }}</h5>
                                     <div>
-                                        <span>Ultimo accesso </span>
                                         <span class="">
-                                            {{writing === 'started' ? 'Sta scrivendo...' : writing === 'ended' ? 'Online' :
+                                            {{writing === 'started' ? 'Sta scrivendo...' : writing === 'ended' ? 'Online' : 'Ultimo acceso ' +
                                             activeContact.messages[activeContact.messages.length - 1].date.slice(0.5)}}
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="icons">
-                                <span class="fa-solid fa-magnifying-glass"></span>
-                                <span class="fa-solid fa-paperclip"></span>
-                                <span class="fa-solid fa-ellipsis-vertical"></span>
+                            <div class="icons-acount">
+                                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <button><i class="fa-solid fa-paperclip"></i></button>
+                                <button @click="showMenu = !showMenu" class="fa-solid fa-ellipsis-vertical"></button>
+                                <div class="" v-if="showMenu">
+                                    <a class="" href="#" @click="deleteMessages">Delete messages</a>
+                                    <a class="" href="#" @click="deleteChat">Delete chat</a>
+                                </div>
                             </div>
                         </div>
                         <!---////Sezione header-chat///--->
 
                         <!---Sezione contenuto-chat--->
-                            <div class=" col-12 contenuto-message py-5 px-3 px-md-5">
-                                <p class="py-3 my-5 px-3 rounded p-chat " v-for="message in activeContact.messages"
-                                :class="message.status === 'sent' ? 'sent-message' : 'received-message'">{{ message.message }}
-                                <span class="text-end">{{message.date.slice(10).slice(0, 5)}}</span>
-                                </p>
-                             </div>
+                            <div class=" contenuto-message py-5 px-3 px-md-5":class="{theme: modeTheme}">
+                                    <p class="py-3 my-5 px-3 rounded color-chat" v-for="(message,index) in activeContact.messages":key="message.date"
+                                    :class="message.status === 'sent' ? 'sent-message' : 'received-message'">{{ message.message }}
+                                    <span class="text-end text-muted">{{message.date.slice(10).slice(0, 5)}}</span>
+                                    </p>
+                            </div>
                              <!---///Sezione contenuto///-chat--->
 
                              <!---Sezione input-chat--->
@@ -126,7 +141,7 @@
         </div>
     </div>
     <script src="https://unpkg.com/vue@3.2.47/dist/vue.global.js"></script>
-    <!--<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="./js/boolzapp.js"></script>
 </body>
 </html>

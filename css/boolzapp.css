@@ -25,27 +25,33 @@ span i{
     border-radius: 50%;
     margin-right: 10px;
   }
-  
-  p {
-    margin-bottom: 1rem;
-    font-size: 20px;
-    color: white;
-  }
-  .p-chat{
+
+  .color-chat{
     color: black;
   }
   .jc-wrapper{
+    width: 100%;
     height: 100%;
     overflow: hidden;
-    background-image: url(../img/mine.jpg);
+   /* background-image: url(../img/mine.jpg);*/
+    position: relative;
+  }
+  .contenuto-left{
+   /*background-color: var(--bg-contatti);*/
+    height: 100%;
+    padding-bottom: 75px;
     
     
   }
-  .contenuto-left{
-    background-color: var(--bg-contatti);
-    height: 100%;
-    padding-bottom: 75px;
-    color: white;
+  .w-40{
+    width: 40%;
+  }
+  .contenuto-right{
+    background-image: url(../img/mine.jpg);
+    
+  }
+  .w-60{
+    width: 60%;
   }
   .contact-list {
     height: calc(100% - 80px); 
@@ -56,7 +62,7 @@ span i{
     cursor: pointer;
 }
 .chats.selected {
-    background-color: var(--bg-chat);
+    /*background-color: var(--bg-chat);*/
 }
   .contact-list::-webkit-scrollbar {
     width: 6px; 
@@ -85,25 +91,17 @@ span i{
     width: calc(100% - 140px);
     height: 50px;
   }
-  /*.foot-input{
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #eff1f4;
-    padding: 0.4rem 0.5rem;
-  }*/
+  
   .profilo-left {
     height: 80px;
-    background-color: var(--bg-chat);
+  /* background-color: var(--bg-chat);*/
   }
-  .contenuto-chat{
-    
-  }
+ 
   .header-profilo{
-    position: fixed;
+   position: absolute;
     top: 0;
     height: 80px;
-    min-width: 100%;
+    width: 100%;
     background-color: var(--bg-chat);
     z-index: 1000;
     color: white;
@@ -115,7 +113,8 @@ span i{
     height: calc(100% - 80px);
     overflow-y: auto;
 }
-.contenuto-message p {
+
+.contenuto-message p{
     width: fit-content;
     max-width: 300px;
 
@@ -129,7 +128,7 @@ span i{
     padding: 0;
     
 }
-.icons span{
+{
     padding: 10px;
 }
 .sent-message {
@@ -143,17 +142,64 @@ span i{
 }
 .input-chat{
     height: 60px;
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
-
-.icons-acount button{
+.Theme{
+  background-color: lightgrey;
+    color: black
+}*/
+.lightTheme {
+  background-color: white;
+  color: black;
+}
+.bgblack{
+  background-color: var(--bg-contatti);
+  color: white;
+}
+/*************/
+.ellipsis-button:hover {
+  color:#b1a6f0;
+}
+.showmenu{
+  display: flex !important;
+}
+.item-dropdown {
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    right: -20px;
+    top: 20px;
+    background-color: white;
+    z-index: 1000;
+    display: none !important;
+}
+.item-dropdown.usercontrol{
+  width: fit-content;
+  height: fit-content;
+  font-size: 1rem;
+}
+.icons-acount button,
+.controls-icon{
+  cursor: pointer;
+  background-color: transparent;
+  border-width: 0;
+  padding: 10px;
+  font-size: 1.3rem;
+}
+/*.controls-icon button {
     cursor: pointer;
     background-color: transparent;
-    color: white;
     border-width: 0;
-    padding: 10px;
-    font-size: 1.3rem;
+    padding: 0;
+}*/
+.themeselection.item-dropdown {
+  width: fit-content;
+  height: fit-content;
+  margin:0 auto;
 }
-
 
 @media screen and (max-width:865px){
 

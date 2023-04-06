@@ -178,9 +178,11 @@ createApp({
     newMessage: '',
     chatSearch: '',
     showChat: false,
+    showMenu: false,
     writing: false,
-    changeTheme: false,
-    lightTheme: false
+    modeTheme: false,
+   
+    
     }
     
   },
@@ -230,20 +232,32 @@ createApp({
                   status: 'received'
                 });
                 this.writing = "ended"
-              }, 1000);
+              }, 2000);
               setTimeout(() => { 
                 this.writing = false;
 
-            }, 3000);
+            }, 4000);
          };
          
            
         },
-        DarkLight() {
-            this.lightTheme = !this.lightTheme;
-            this.changeTheme = !this.changeTheme;
+        deleteMessages() {
+            this.activeContact.messages = [];
+        },
+        deleteChat() {
+    
+        },
+
+       /* changeTheme() {
+            this.modeTheme = !this.modeTheme;
+            const body = document.querySelector('body');
+            body.classList.toggle('darkTheme');
+        }*/
+        changeTheme() {
+            this.modeTheme = !this.modeTheme;
+           /* this.showMenu = !this.showMenu;*/
             if (this.lightTheme) {
-            document.querySelector("body").className = "bglight"
+            document.querySelector("body").className = "lightTheme"
             }
             else {
             document.querySelector("body").className = "bgblack"
