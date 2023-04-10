@@ -1,3 +1,5 @@
+
+
 const {createApp} = Vue;
 
 createApp({
@@ -177,93 +179,96 @@ createApp({
     activeContact: null,
     newMessage: '',
     chatSearch: '',
-    showChat: false,
+    lightMenu: false,
     showMenu: false,
     writing: false,
     modeTheme: false,
-   
-    
+    selectChat: false,
+    homeMode: true,
+    deletDropdown: false,
     }
     
   },
  
-    methods: {
-        /******seleziona un contatto attivo */
-        setActiveContact(contact) {
-          this.activeContact = contact;
-          
-        },
-        /********funzione per filtrare contatti */
-       filteredContacts() {
-            return this.contacts.filter((contact) => {
-              return contact.name.toLowerCase().startsWith(this.chatSearch.toLowerCase())
-            })
-          },
-          /****funzione risposte random***/
-          getRndInteger(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        },
-          
-        sendMessage() {
-          if (this.newMessage.trim() !== '') {
+  methods: {
+    /******seleziona un contatto attivo */
+    setActiveContact(contact) {
+      this.activeContact = contact;
+      
+    },
+    /********funzione per filtrare contatti */
+   filteredContacts() {
+        return this.contacts.filter((contact) => {
+          return contact.name.toLowerCase().startsWith(this.chatSearch.toLowerCase())
+        })
+      },
+      /****funzione risposte random***/
+      getRndInteger(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    },
+      
+    sendMessage() {
+      if (this.newMessage.trim() !== '') {
+        this.activeContact.messages.push({
+          date: new Date().toLocaleString(),
+          message: this.newMessage.trim(),
+          status: 'sent'
+        });
+        this.newMessage = '',
+
+        answers = ["☼-☼! x.x (^☼^)",
+        "Va bene",
+        "Cosa vuoi..",
+        "Messaggio predeterminato: Non rompere",
+        "Non dimenticare ",
+        ];
+
+        answer = this.getRndInteger(0, answers.length - 1)
+        
+        this.newMessage = '',
+        this.writing = "started"
+        setTimeout(() => {
+             
             this.activeContact.messages.push({
               date: new Date().toLocaleString(),
-              message: this.newMessage.trim(),
-              status: 'sent'
+              message: answers[answer],
+              status: 'received'
             });
-            this.newMessage = '',
+            this.writing = "ended"
+          }, 2000);
+          setTimeout(() => { 
+            this.writing = false;
 
-            answers = ["☼-☼! x.x (^☼^)",
-            "Va bene",
-            "Cosa vuoi..",
-            "Messaggio predeterminato: Non rompere",
-            "Non dimenticare ",
-            ];
-
-            answer = this.getRndInteger(0, answers.length - 1)
-            
-            this.newMessage = '',
-            this.writing = "started"
-            setTimeout(() => {
-                 
-                this.activeContact.messages.push({
-                  date: new Date().toLocaleString(),
-                  message: answers[answer],
-                  status: 'received'
-                });
-                this.writing = "ended"
-              }, 2000);
-              setTimeout(() => { 
-                this.writing = false;
-
-            }, 4000);
-         };
-         
-           
-        },
-        deleteMessages() {
-            this.activeContact.messages = [];
-        },
-        deleteChat() {
-    
-        },
-
-       /* changeTheme() {
-            this.modeTheme = !this.modeTheme;
-            const body = document.querySelector('body');
-            body.classList.toggle('darkTheme');
-        }*/
-        changeTheme() {
-            this.modeTheme = !this.modeTheme;
-           /* this.showMenu = !this.showMenu;*/
-            if (this.lightTheme) {
-            document.querySelector("body").className = "lightTheme"
-            }
-            else {
-            document.querySelector("body").className = "bgblack"
-            }
-        }
+        }, 4000);
+     };
+     
+       
     },
+    deleteMessages() {
+        this.activeContact.messages = [];
+        this.deletDropdown = false;
+    },
+    deleteChat() {
+        this.contacts.splice(this.activeContact, 1);
+        console.log(this.activeContact)
+        this.deletDropdown = false;
+    },
+   /* changeTheme() {
+        this.modeTheme = !this.modeTheme;
+        const body = document.querySelector('body');
+        body.classList.toggle('darkTheme');
+    }*/
+    changeTheme() {
+        this.modeTheme = !this.modeTheme;
+        this.lightMenu = !this.lightMenu;
+        if (this.lightTheme) {
+        document.querySelector("body").className = "lightTheme"
+        }
+        else {
+        document.querySelector("body").className = "bgblack"
+        }
+    }
+},
 
       
     

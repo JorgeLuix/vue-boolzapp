@@ -6,18 +6,22 @@
    
  }
  
- /*.sfondo{
-    background: linear-gradient(
-    #009688 0%,
+ body{
+    background-image: linear-gradient(to bottom,
     #009688 130px,
     #d9dbd5 130px,
     #d9dbd5 100%);
-    height: 80px;
-    
- }*/
-
-span i{
-    padding: 5px;
+    /*height: 80px;*/
+    display: flex;
+    font-family: 'Lato', sans-serif;
+    width: 100%;
+    height: 95vh;
+ }
+#app {
+    margin: 0 auto;
+    width: 1200px;
+    margin-top: 20px;
+    height: 95%;
 }
 .avatar {
     width: 50px;
@@ -29,42 +33,30 @@ span i{
   .color-chat{
     color: black;
   }
-  .jc-wrapper{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-   /* background-image: url(../img/mine.jpg);*/
-    position: relative;
-  }
   .contenuto-left{
-   /*background-color: var(--bg-contatti);*/
+   background-color: white;
     height: 100%;
-    padding-bottom: 75px;
-    
-    
-  }
-  .w-40{
-    width: 40%;
+    width: 40%
   }
   .contenuto-right{
-    background-image: url(../img/mine.jpg);
-    
-  }
-  .w-60{
     width: 60%;
+    height: 100%;
   }
   .contact-list {
-    height: calc(100% - 80px); 
+    height: calc(100% - (230px)); 
     overflow-y: auto; 
+    background-color: white;
   }
-  .chats:hover {
-    background-color: var(--bg-chat);
+  .chats:hover,
+  .chats:active {
+    background-color: rgb(225, 240, 248);
     cursor: pointer;
+    color: black;
 }
-.chats.selected {
-    /*background-color: var(--bg-chat);*/
-}
-  .contact-list::-webkit-scrollbar {
+/*.active {
+  display: block;
+}*/
+.contact-list::-webkit-scrollbar {
     width: 6px; 
     height: 2px; 
   }
@@ -80,38 +72,33 @@ span i{
   .contact-list::-webkit-scrollbar-thumb:hover {
     background: #555; /* colore del "pulsante" della scrollbar quando viene passato sopra con il mouse */
   }
-  .smile {
-    width: 70px;
-    
-  }
-  .micro {
-    width: 70px;
-  }
-  .jc-inp{
-    width: calc(100% - 140px);
-    height: 50px;
-  }
-  
   .profilo-left {
     height: 80px;
-  /* background-color: var(--bg-chat);*/
   }
  
   .header-profilo{
-   position: absolute;
-    top: 0;
     height: 80px;
-    width: 100%;
-    background-color: var(--bg-chat);
-    z-index: 1000;
-    color: white;
+    background-color: white;
   }
   .icon-left{
     display: none;
   }
+.menu-dropdown {
+  width: 170px;
+  height: 90px;
+  position: absolute;
+  right: 10px;
+  top: 40px;
+  background-color: white;
+  box-shadow: 0 10px 10px #666;
+  z-index: 1000;
+  border-radius: 10px;
+  border: 1px solid black;
+}
 .contenuto-message {
-    height: calc(100% - 80px);
-    overflow-y: auto;
+  height: calc(100% - 80px - 80px);
+  overflow-y: scroll;
+  background-image: url("../img/mine.jpg");
 }
 
 .contenuto-message p{
@@ -124,33 +111,38 @@ span i{
     height: 80px;
 
 }
-.padd-notifiche {
-    padding: 0;
-    
-}
-{
-    padding: 10px;
-}
 .sent-message {
     background-color: #D9FDD3;
     margin-left: auto;
-    
+    font-size: 1.2rem;
 }
 .received-message{
     background-color:white;
     margin-right: auto;
+    font-size: 1.2rem;
 }
 .input-chat{
-    height: 60px;
-    position: relative;
-    left: 0;
-    right: 0;
-    bottom: 0;
+  height: 80px;
+  background-color: white;
+  border: 1px solid black;
+}
+.jc-inp{
+  width: calc(100% - 140px);
+  height: 50px;
+  padding-left: 10px;
+  border-radius: 6px;
+}
+.smile {
+  width: 70px;
+  padding-right: 10px;
+}
+.micro {
+  width: 70px;
 }
 .Theme{
   background-color: lightgrey;
     color: black
-}*/
+}
 .lightTheme {
   background-color: white;
   color: black;
@@ -160,45 +152,13 @@ span i{
   color: white;
 }
 /*************/
-.ellipsis-button:hover {
-  color:#b1a6f0;
-}
-.showmenu{
-  display: flex !important;
-}
-.item-dropdown {
-    width: 200px;
-    height: 100px;
-    position: absolute;
-    right: -20px;
-    top: 20px;
-    background-color: white;
-    z-index: 1000;
-    display: none !important;
-}
-.item-dropdown.usercontrol{
-  width: fit-content;
-  height: fit-content;
-  font-size: 1rem;
-}
 .icons-acount button,
-.controls-icon{
+.controls-icon button{
   cursor: pointer;
   background-color: transparent;
   border-width: 0;
   padding: 10px;
   font-size: 1.3rem;
-}
-/*.controls-icon button {
-    cursor: pointer;
-    background-color: transparent;
-    border-width: 0;
-    padding: 0;
-}*/
-.themeselection.item-dropdown {
-  width: fit-content;
-  height: fit-content;
-  margin:0 auto;
 }
 
 @media screen and (max-width:865px){
