@@ -182,9 +182,8 @@ createApp({
     lightMenu: false,
     showMenu: false,
     writing: false,
-    modeTheme: false,
     selectChat: false,
-    homeMode: true,
+    homePage: true,
     deletDropdown: false,
     }
     
@@ -193,6 +192,7 @@ createApp({
   methods: {
     /******seleziona un contatto attivo */
     setActiveContact(contact) {
+      this.homePage = false;
       this.activeContact = contact;
       
     },
@@ -252,6 +252,7 @@ createApp({
         this.contacts.splice(this.activeContact, 1);
         console.log(this.activeContact)
         this.deletDropdown = false;
+        this.homePage = true;
     },
    /* changeTheme() {
         this.modeTheme = !this.modeTheme;

@@ -70,9 +70,11 @@
                  <!--// Lato sinistro// -->
                  <!--lato destro-->
     <div class="contenuto-right"v-if="activeContact">
-        <div class="h-100 w-100">
-            <div class="container-fluid header-profilo d-flex align-items-center justify-content-between py-3"
-                    :class="{theme: modeTheme}">
+        <div class="homepage" v-show="homePage">
+        <img src="./img/2023-04-02 1.png" alt="">
+    </div>
+        <div class="h-100 w-100" v-show="(!homePage)">
+            <div class="container-fluid header-profilo d-flex align-items-center justify-content-between py-3">
                 <div class="container d-flex align-items-center py-2 ps-1">
                     <button class="icon-left">
                         <i class="fa-solid fa-angle-left p-2"></i>
